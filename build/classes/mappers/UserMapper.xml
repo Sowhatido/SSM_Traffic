@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="school.xzit.mapper.UserMapper">
+
+	
+	<select id="selectByUsername" resultType="school.xzit.bean.User">
+		select * from User where username = #{username} ;
+	</select>
+	
+	<insert id="registerUser" parameterType="school.xzit.bean.User">
+		insert into user values(#{username},
+									#{password},
+									#{permission});
+	</insert>
+	
+	<select id="findAllByName" resultType="school.xzit.bean.Info">
+		select * from Info where username=#{username};
+	</select>
+	
+	<select id="selectByDriverName" resultType="school.xzit.bean.Info">
+		select * from Info where username = #{username} ;
+	</select>
+	
+	<update id="updateDriver" parameterType="school.xzit.bean.Info">
+		update info set age = #{age},sex=#{sex},phone=#{phone} where username=#{username} and permission=#{permission}
+	</update>
+	
+	
+</mapper>
