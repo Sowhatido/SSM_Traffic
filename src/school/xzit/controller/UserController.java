@@ -1,15 +1,16 @@
 package school.xzit.controller;
 
-
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.sun.corba.se.spi.ior.ObjectKey;
 
 import school.xzit.bean.Info;
 import school.xzit.bean.ResponseResult;
@@ -20,19 +21,13 @@ import school.xzit.service.UserServiceImpl;
 @RequestMapping("/user")
 public class UserController {
 	
-	
-
 	@Autowired
 	private UserServiceImpl userService;
 	
-	
 	@RequestMapping("/a.do")
-	
 	public String showJsp(){
 		return "a";
 	}
-	
-
 	
 	@RequestMapping("/showLogin.do")
 	public String showLogin(){
@@ -67,14 +62,10 @@ public class UserController {
 		return "register";
 	}
 	
-	
-	
-	
+
 	@RequestMapping(value="/userLogin.do",produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public ResponseResult<Void> login(String username,String password,String permission,HttpSession session){
-		
-		
 		
 		System.out.println(username+"11");
 		System.out.println(password+"22");
@@ -198,6 +189,21 @@ public class UserController {
 		
 		
 		return "driverinfo";
+	}
+	
+	@RequestMapping("selectTest.do")
+	@ResponseBody
+	public User select(HttpSession session){
+		String username = (String) session.getAttribute("username");
+		System.out.println(username);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", 1);
+		map.put("username", "张三");
+		map.put("password", "123456");
+		map.put("permission2", "车主");
+		User user = userService.selectAllCodi(map);
+		return user;
+		
 	}
 	
 	

@@ -1,6 +1,13 @@
 package school.xzit.bean;
 
 public class User {
+	private Integer id;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	private String username;
 	private String password;
 	private String permission;
@@ -33,7 +40,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", permission=" + permission + "]";
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 	
 	

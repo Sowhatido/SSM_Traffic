@@ -1,6 +1,6 @@
 package school.xzit.mapper;
 
-import java.util.List;
+import java.util.Map;
 
 import school.xzit.bean.Info;
 import school.xzit.bean.User;
@@ -17,6 +17,8 @@ public interface UserMapper {
 	Info selectByDriverName(String username);
 
 	void updateDriver(Info info);
+
+	User selectAll(Map map);
 	
 
 }

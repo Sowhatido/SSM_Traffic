@@ -1,6 +1,7 @@
 package school.xzit.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.management.RuntimeErrorException;
 
@@ -72,6 +73,11 @@ public class UserServiceImpl implements IUserService{
 	public void updateDriver(Info info) {
 		
 		userMapper.updateDriver(info);
+		
+	}
+
+	public User selectAllCodi(Map map) {
+		return userMapper.selectAll(map);
 		
 	}
 
